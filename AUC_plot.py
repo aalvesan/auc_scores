@@ -15,15 +15,17 @@ if __name__ == '__main__':
 
     keys = ['best','mid','low']
     mass_points = [400,800,1250]
-
      
     all_folders = [ item for item in os.listdir(inputDir) if os.path.isdir(os.path.join(inputDir,item))]
     ml__folders = []
     json_files  = []
+
     for folder_name in all_folders:
-        for key in keys:
-            if key in folder_name:
-                ml__folders.append(folder_name)
+        if 'combined' not in folder_name:
+            for key in keys:
+                if key in folder_name:
+                    ml__folders.append(folder_name)
+    print(ml__folders)
 
     for folder in ml__folders:
             inputdir    = os.path.join(inputDir,folder)
